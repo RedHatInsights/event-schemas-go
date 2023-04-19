@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - main
+name: release
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      pr: ${{ steps.release.outputs.pr }}
+      release_version: ${{ format('{0}.{1}.{2}', steps.release.outputs.major, steps.release.outputs.minor, steps.release.outputs.patch) }}
+    steps:
+      - id: release
+        uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: go
+          package-name: RedHatInsights-event-schemas-go
+  publish:
+    needs: [ release ]
+    runs-on: ubuntu-latest
+    if: ${{ needs.release.outputs.release_created }}
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.16
+      - name: Update index
+        run: GOPROXY=proxy.golang.org go list -m github.com/RedHatInsights/event-schemas-go@v${{ needs.release.outputs.release_version }}
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
