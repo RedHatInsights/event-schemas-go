@@ -15,6 +15,7 @@ jobs:
         uses: google-github-actions/release-please-action@v3
         with:
           release-type: go
+          token: ${{ secrets.NACHO_BOT_TOKEN }}
           package-name: RedHatInsights-event-schemas-go
   update-index:
     needs: [ release ]
