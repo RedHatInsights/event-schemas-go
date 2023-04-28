@@ -28,3 +28,5 @@ jobs:
           go-version: 1.16
       - name: Update index
         run: GOPROXY=proxy.golang.org go list -m github.com/RedHatInsights/event-schemas-go@v${{ needs.release.outputs.release_version }}
+      - name: Update pkg.go
+        run: curl -XPOST https://pkg.go.dev/fetch/github.com/RedHatInsights/event-schemas-go@v${{ needs.release.outputs.release_version }} || true
