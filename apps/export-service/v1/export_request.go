@@ -4,7 +4,7 @@
 //    exportRequest, err := UnmarshalExportRequest(bytes)
 //    bytes, err = exportRequest.Marshal()
 
-package export-service
+package export_service
 
 import "encoding/json"
 
