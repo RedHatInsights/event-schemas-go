@@ -20,6 +20,14 @@ jobs:
       - name: Check if there are changes
         id: changes
         run: echo "changed=$(git status --porcelain | wc -l)" >> $GITHUB_OUTPUT
+      - name: Set up Go
+        if: steps.changes.outputs.changed != 0
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.16
+      - name: Build
+        if: steps.changes.outputs.changed != 0
+        run: ./scripts/build.sh
       - uses: EndBug/add-and-commit@v9
         if: steps.changes.outputs.changed != 0
         with:
