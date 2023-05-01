@@ -20,12 +20,24 @@ class StaticJSONSchemaStore extends JSONSchemaStore {
   }
 }
 
+const ignoredFiles = [
+    ["core", "common.json"],
+    ["core", "empty.json"]
+];
+
 async function generateFiles(repoRoot, subdir) {
   const versions = await fsPromises.readdir(`${repoRoot}/api/schemas/${subdir}`);
   for (const version of versions) {
     const schemas = await fsPromises.readdir(`${repoRoot}/api/schemas/${subdir}/${version}`);
+
+    schemas_loop:
     for (const schema of schemas) {
-      if (schema === 'empty.json' && subdir === 'core') continue // skip empty, quicktype generates bad code for this
+      for ([ignoredSubdir, ignoredSchema] of ignoredFiles) {
+        if (schema === ignoredSchema && subdir === ignoredSubdir) {
+          continue schemas_loop;
+        }
+      }
+
       const schemaPath = `${repoRoot}/api/schemas/${subdir}/${version}/${schema}`;
       const jsonSchemaString = await fsPromises.readFile(schemaPath, {encoding: 'utf8'});
       const filename = path.basename(schemaPath);
@@ -43,8 +55,8 @@ async function generateFiles(repoRoot, subdir) {
 }
 
 async function generateGoFiles(subdir, version, inputData, schema) {
-  const outputPath = `${subdir}/${version}`;
-  const packageName = path.basename(subdir);
+  const outputPath = `${subdir.replaceAll('-', '')}/${version}`;
+  const packageName = path.basename(subdir).replaceAll('-', '');
   const result = await quicktypeMultiFile({
     inputData,
     lang: "go",
