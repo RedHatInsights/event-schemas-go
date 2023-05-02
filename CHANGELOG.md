@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/RedHatInsights/event-schemas-go/compare/v1.0.1...v1.0.2) (2023-05-02)
+
+
+### Bug Fixes
+
+* Regenerate types ([cff17c1](https://github.com/RedHatInsights/event-schemas-go/commit/cff17c174acc8fb9a748831a5d7cbf8d64598eb6))
+* Remove invalid characters from packagename and subdir ([e6a00b3](https://github.com/RedHatInsights/event-schemas-go/commit/e6a00b3876fef59ab9d192042b2312cf4e8a4e67))
+
 ## [1.0.1](https://github.com/RedHatInsights/event-schemas-go/compare/v1.0.0...v1.0.1) (2023-04-28)
 
 
