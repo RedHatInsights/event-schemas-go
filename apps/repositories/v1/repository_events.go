@@ -25,18 +25,18 @@ type RepositoryEvents struct {
 }
 
 type Repositories struct {
-	DistributionArch             *string       `json:"distribution_arch,omitempty"`
-	DistributionVersions         []interface{} `json:"distribution_versions,omitempty"`
-	FailedIntrospectionsCount    *int64        `json:"failed_introspections_count,omitempty"`
-	GPGKey                       *string       `json:"gpg_key,omitempty"`
-	LastIntrospectionError       *string       `json:"last_introspection_error,omitempty"`
-	LastIntrospectionTime        *string       `json:"last_introspection_time,omitempty"`
-	LastSuccessIntrospectionTime *string       `json:"last_success_introspection_time,omitempty"`
-	LastUpdateIntrospectionTime  *string       `json:"last_update_introspection_time,omitempty"`
-	MetadataVerification         *bool         `json:"metadata_verification,omitempty"`
-	Name                         string        `json:"name"`
-	PackageCount                 *int64        `json:"package_count,omitempty"`
-	Status                       *string       `json:"status,omitempty"`
-	URL                          string        `json:"url"`
-	UUID                         string        `json:"uuid"`
+	DistributionArch             *string  `json:"distribution_arch,omitempty"`
+	DistributionVersions         []string `json:"distribution_versions,omitempty"`
+	FailedIntrospectionsCount    *int64   `json:"failed_introspections_count,omitempty"`
+	GPGKey                       *string  `json:"gpg_key,omitempty"`
+	LastIntrospectionError       *string  `json:"last_introspection_error,omitempty"`
+	LastIntrospectionTime        *string  `json:"last_introspection_time,omitempty"`
+	LastSuccessIntrospectionTime *string  `json:"last_success_introspection_time,omitempty"`
+	LastUpdateIntrospectionTime  *string  `json:"last_update_introspection_time,omitempty"`
+	MetadataVerification         *bool    `json:"metadata_verification,omitempty"`
+	Name                         string   `json:"name"`
+	PackageCount                 *int64   `json:"package_count,omitempty"`
+	Status                       *string  `json:"status,omitempty"`
+	URL                          string   `json:"url"`
+	UUID                         string   `json:"uuid"`
 }
