@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/RedHatInsights/event-schemas-go/compare/v1.0.2...v1.0.3) (2023-05-09)
+
+
+### Bug Fixes
+
+* **deps:** bump api from `359e3bf` to `57389f9` ([755eb54](https://github.com/RedHatInsights/event-schemas-go/commit/755eb54f399c0db89284a1065e86ba6e227810d7))
+* Regenerate types ([36cc1f8](https://github.com/RedHatInsights/event-schemas-go/commit/36cc1f8f2d6589de5d7d27f76ef804d967391d61))
+
 ## [1.0.2](https://github.com/RedHatInsights/event-schemas-go/compare/v1.0.1...v1.0.2) (2023-05-02)
 
 
