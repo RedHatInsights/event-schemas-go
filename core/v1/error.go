@@ -37,8 +37,9 @@ type ErrorClass struct {
 
 // The severity of the error.
 type Severity string
+
 const (
-	Critical Severity = "critical"
+	Critical      Severity = "critical"
 	SeverityError Severity = "error"
-	Warning Severity = "warning"
+	Warning       Severity = "warning"
 )

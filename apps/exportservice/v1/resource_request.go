@@ -44,7 +44,8 @@ type ResourceRequestClass struct {
 
 // The format of the data to be exported
 type Format string
+
 const (
-	CSV Format = "csv"
+	CSV  Format = "csv"
 	JSON Format = "json"
 )
