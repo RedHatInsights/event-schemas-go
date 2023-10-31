@@ -27,6 +27,9 @@ type Notification struct {
 
 // Notification recipients. Should be in a top-level field named "notification_recipients"
 type Recipients struct {
+	// List of emails to direct the notification to. This won’t override notification's               
+	// administrators settings. Emails list will be merged with other settings.                       
+	Emails                                                                                   []string `json:"emails,omitempty"`
 	// Setting to true ignores all the user preferences on this Recipient setting (It doesn’t         
 	// affect other configuration that an Administrator sets on their Notification settings).         
 	// Setting to false honors the user preferences.                                                  
